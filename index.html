@@ -587,18 +587,31 @@ footer {
 }
 .diag-mosaic {
     display: grid;
-    grid-template-columns: 1.3fr 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 16px;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
 .diag-shot {
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid rgba(242,238,227,0.14);
-    aspect-ratio: 4/3;
+    position: relative;
 }
-.diag-shot.tall { grid-row: span 2; aspect-ratio: auto; }
-.diag-shot img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: top; }
+.diag-shot img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.diag-shot.wide { grid-column: span 2; aspect-ratio: 21/9; }
+.diag-shot.wide img { object-position: top; }
+.diag-shot.sq { aspect-ratio: 4/3; }
+.diag-shot.sq img { object-position: top; }
+.diag-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    background: linear-gradient(transparent, rgba(0,0,0,0.75));
+    padding: 30px 18px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--bone);
+}
 .diag-cta-row {
     margin-top: 44px;
     display: flex;
@@ -610,8 +623,8 @@ footer {
 
 @media (max-width: 880px) {
     .modulo-grid { grid-template-columns: 1fr; }
-    .diag-mosaic { grid-template-columns: 1fr 1fr; }
-    .diag-shot.tall { grid-row: span 1; }
+    .diag-mosaic { grid-template-columns: 1fr; }
+    .diag-shot.wide { grid-column: span 1; }
 }
 
 @media (max-width: 880px) {
@@ -790,11 +803,26 @@ footer {
                 <p>123 municipios analizados. Un documento de más de 47 páginas por municipio: contexto territorial, historia política, análisis de la elección 2024, escenarios 2027 y recomendaciones estratégicas — listo para descargar en PDF.</p>
             </div>
             <div class="diag-mosaic">
-                <div class="diag-shot tall"><img src="/diag-galeria.png" alt="Galería de 123 municipios"></div>
-                <div class="diag-shot"><img src="/diag-votacion.png" alt="Votación municipal por elección"></div>
-                <div class="diag-shot"><img src="/diag-mapacalor.png" alt="Mapa de calor del partido ganador"></div>
-                <div class="diag-shot"><img src="/diag-indice.png" alt="Índice del documento"></div>
-                <div class="diag-shot"><img src="/diag-zonas.png" alt="Zonas estratégicas para campaña 2027"></div>
+                <div class="diag-shot wide">
+                    <img src="/diag-galeria.png" alt="Galería de 123 municipios">
+                    <div class="diag-caption">123 municipios · uno por uno</div>
+                </div>
+                <div class="diag-shot sq">
+                    <img src="/diag-indice.png" alt="Índice del documento">
+                    <div class="diag-caption">Más de 47 páginas por municipio</div>
+                </div>
+                <div class="diag-shot sq">
+                    <img src="/diag-votacion.png" alt="Votación municipal por elección">
+                    <div class="diag-caption">26 años de historia electoral</div>
+                </div>
+                <div class="diag-shot sq">
+                    <img src="/diag-mapacalor.png" alt="Mapa de calor del partido ganador">
+                    <div class="diag-caption">Control territorial por partido</div>
+                </div>
+                <div class="diag-shot sq">
+                    <img src="/diag-zonas.png" alt="Zonas estratégicas para campaña 2027">
+                    <div class="diag-caption">Estrategia de campaña 2027</div>
+                </div>
             </div>
             <div class="diag-cta-row">
                 <a href="#contacto" class="btn-light">Solicitar diagnóstico de mi municipio</a>
