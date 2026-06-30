@@ -490,7 +490,125 @@ footer {
     color: var(--stone);
 }
 
-/* ---------- RESPONSIVE ---------- */
+/* ---------- SISTEMA / CAPTURAS ---------- */
+.sistema {
+    background: var(--ink);
+    color: var(--bone);
+}
+.sistema .eyebrow { color: var(--terra-soft); }
+.sistema .section-head p { color: #B8B2A1; }
+
+.modulo-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 36px;
+}
+.modulo-tab {
+    background: rgba(242,238,227,0.06);
+    border: 1px solid rgba(242,238,227,0.14);
+    color: #B8B2A1;
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.modulo-tab:hover { background: rgba(242,238,227,0.1); color: var(--bone); }
+.modulo-tab.active {
+    background: var(--terra);
+    border-color: var(--terra);
+    color: var(--ink);
+}
+
+.modulo-panel { display: none; }
+.modulo-panel.active { display: block; }
+
+.modulo-grid {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: 40px;
+    align-items: center;
+}
+.modulo-info h3 {
+    font-size: 26px;
+    margin-bottom: 6px;
+}
+.modulo-info .q {
+    font-family: 'Fraunces', serif;
+    font-style: italic;
+    color: var(--terra-soft);
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+.modulo-info p.desc {
+    color: #B8B2A1;
+    font-size: 15px;
+    margin-bottom: 24px;
+}
+.modulo-info .btn-light {
+    display: inline-block;
+}
+.modulo-shot {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(242,238,227,0.14);
+    box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+.modulo-shot img {
+    width: 100%;
+    display: block;
+}
+
+/* Diagnostico destacado */
+.diag-feature {
+    margin-top: 90px;
+    border-top: 1px solid rgba(242,238,227,0.14);
+    padding-top: 70px;
+}
+.diag-feature-head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 48px;
+}
+.diag-feature-head h3 {
+    font-size: clamp(26px, 3vw, 34px);
+    margin-top: 10px;
+}
+.diag-feature-head p {
+    color: #B8B2A1;
+    margin-top: 14px;
+    font-size: 15.5px;
+}
+.diag-mosaic {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 16px;
+}
+.diag-shot {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(242,238,227,0.14);
+}
+.diag-shot img { width: 100%; display: block; }
+.diag-shot.tall { grid-row: span 2; }
+.diag-cta-row {
+    margin-top: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 880px) {
+    .modulo-grid { grid-template-columns: 1fr; }
+    .diag-mosaic { grid-template-columns: 1fr 1fr; }
+    .diag-shot.tall { grid-row: span 1; }
+}
+
 @media (max-width: 880px) {
     .nav-links { display: none; }
     .hero-grid { grid-template-columns: 1fr; }
@@ -514,6 +632,7 @@ footer {
         </a>
         <div class="nav-links">
             <a href="#electoral">Inteligencia Electoral</a>
+            <a href="#sistema">Plataforma</a>
             <a href="#servicios">Servicios</a>
             <a href="#podcast">Podcast</a>
             <a href="#sobre-mi">Sobre mí</a>
@@ -539,10 +658,6 @@ footer {
             </div>
             <div class="hero-figure">
                 <img src="/baldemar.png" alt="Baldemar Maza León" class="hero-photo">
-                <div class="hero-stat-card">
-                    <div class="num">123</div>
-                    <div class="lbl">Municipios mapeados</div>
-                </div>
             </div>
         </div>
     </div>
@@ -583,6 +698,102 @@ footer {
         <div class="electoral-cta">
             <p>La plataforma ya está activa y en uso por equipos de campaña en Chiapas. Acceso por municipio o paquete completo.</p>
             <a href="#contacto" class="btn-light">Solicitar acceso</a>
+        </div>
+    </div>
+</section>
+
+<section id="sistema" class="sistema">
+    <div class="wrap">
+        <div class="section-head">
+            <p class="eyebrow">Así se ve por dentro</p>
+            <h2>Una plataforma real, no una promesa</h2>
+            <p>Cada municipio de Chiapas, cada elección desde 1998, cada candidato — navegable, filtrable y exportable. Esto es lo que recibe quien solicita acceso.</p>
+        </div>
+
+        <div class="modulo-tabs">
+            <button class="modulo-tab active" data-modulo="m1">Mapa por Sección</button>
+            <button class="modulo-tab" data-modulo="m2">Mapa por Partido</button>
+            <button class="modulo-tab" data-modulo="m3">Datos por Sección</button>
+            <button class="modulo-tab" data-modulo="m4">Histórico 1998–2024</button>
+            <button class="modulo-tab" data-modulo="m5">Trayectoria de Candidatos</button>
+        </div>
+
+        <div class="modulo-panel active" id="m1">
+            <div class="modulo-grid">
+                <div class="modulo-info">
+                    <h3>Mapa por Sección</h3>
+                    <p class="q">¿Quién ganó cada zona?</p>
+                    <p class="desc">Vista política territorial. Cada sección coloreada por su partido ganador, con zoom hasta nivel de municipio y datos de listado nominal, votación y participación al pasar el cursor.</p>
+                    <a href="#contacto" class="btn-light">Solicitar acceso</a>
+                </div>
+                <div class="modulo-shot"><img src="/mapa-seccion.png" alt="Mapa por sección - Tuxtla Gutiérrez"></div>
+            </div>
+        </div>
+
+        <div class="modulo-panel" id="m2">
+            <div class="modulo-grid">
+                <div class="modulo-info">
+                    <h3>Mapa por Partido</h3>
+                    <p class="q">¿Cómo le fue al partido X?</p>
+                    <p class="desc">Vista por fuerza electoral. Filtra por cada partido y observa dónde tiene presencia, aunque no haya ganado. Top 3 más votados por sección y municipio con un clic.</p>
+                    <a href="#contacto" class="btn-light">Solicitar acceso</a>
+                </div>
+                <div class="modulo-shot"><img src="/mapa-partido.png" alt="Mapa por partido - Ocosingo"></div>
+            </div>
+        </div>
+
+        <div class="modulo-panel" id="m3">
+            <div class="modulo-grid">
+                <div class="modulo-info">
+                    <h3>Datos por Sección</h3>
+                    <p class="q">¿Qué dicen los números de fondo?</p>
+                    <p class="desc">Vista tabular completa de las 2,278 secciones del estado con ganador, votos, participación y margen. Filtra por municipio, distrito o partido — exporta todo a Excel.</p>
+                    <a href="#contacto" class="btn-light">Solicitar acceso</a>
+                </div>
+                <div class="modulo-shot"><img src="/datos-seccion.png" alt="Datos por sección - tabla filtrable"></div>
+            </div>
+        </div>
+
+        <div class="modulo-panel" id="m4">
+            <div class="modulo-grid">
+                <div class="modulo-info">
+                    <h3>Histórico Electoral</h3>
+                    <p class="q">¿Cómo ha votado cada sección desde 1998?</p>
+                    <p class="desc">26 años de historia electoral por sección. Visualiza quién ganó en cada elección desde 1998 hasta 2024. Cambia el año y ve la evolución del voto, municipio por municipio.</p>
+                    <a href="#contacto" class="btn-light">Solicitar acceso</a>
+                </div>
+                <div class="modulo-shot"><img src="/historico.png" alt="Histórico electoral - Bochil 2015"></div>
+            </div>
+        </div>
+
+        <div class="modulo-panel" id="m5">
+            <div class="modulo-grid">
+                <div class="modulo-info">
+                    <h3>Trayectoria de Candidatos</h3>
+                    <p class="q">¿Quién ha competido y cuántas veces?</p>
+                    <p class="desc">Historial completo de candidatos desde 1998 hasta 2024. Busca por nombre o explora quiénes han competido en un municipio — partidos, cargos, victorias y derrotas en línea de tiempo.</p>
+                    <a href="#contacto" class="btn-light">Solicitar acceso</a>
+                </div>
+                <div class="modulo-shot"><img src="/trayectoria.png" alt="Trayectoria de candidatos - perfil individual"></div>
+            </div>
+        </div>
+
+        <div class="diag-feature">
+            <div class="diag-feature-head">
+                <p class="eyebrow">El producto estrella</p>
+                <h3>Diagnósticos electorales municipales</h3>
+                <p>123 municipios analizados. Un documento de más de 47 páginas por municipio: contexto territorial, historia política, análisis de la elección 2024, escenarios 2027 y recomendaciones estratégicas — listo para descargar en PDF.</p>
+            </div>
+            <div class="diag-mosaic">
+                <div class="diag-shot tall"><img src="/diag-galeria.png" alt="Galería de 123 municipios"></div>
+                <div class="diag-shot"><img src="/diag-votacion.png" alt="Votación municipal por elección"></div>
+                <div class="diag-shot"><img src="/diag-mapacalor.png" alt="Mapa de calor del partido ganador"></div>
+                <div class="diag-shot"><img src="/diag-indice.png" alt="Índice del documento"></div>
+                <div class="diag-shot"><img src="/diag-zonas.png" alt="Zonas estratégicas para campaña 2027"></div>
+            </div>
+            <div class="diag-cta-row">
+                <a href="#contacto" class="btn-light">Solicitar diagnóstico de mi municipio</a>
+            </div>
         </div>
     </div>
 </section>
@@ -686,6 +897,15 @@ const municipios = ["Tuxtla Gutiérrez","San Cristóbal de las Casas","Tapachula
 const track = document.getElementById('muniTrack');
 const doubled = [...municipios, ...municipios];
 track.innerHTML = doubled.map(m => `<span>${m}</span>`).join('');
+
+document.querySelectorAll('.modulo-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+        document.querySelectorAll('.modulo-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.modulo-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.modulo).classList.add('active');
+    });
+});
 </script>
 
 </body>
