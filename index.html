@@ -123,9 +123,9 @@ nav .wrap {
 }
 .hero-grid {
     display: grid;
-    grid-template-columns: 1fr 1.05fr;
+    grid-template-columns: 0.95fr 1.15fr;
     gap: 56px;
-    align-items: start;
+    align-items: center;
 }
 .hero h1 {
     font-size: clamp(40px, 5vw, 60px);
@@ -172,11 +172,11 @@ nav .wrap {
 }
 .hero-photo {
     width: 100%;
-    aspect-ratio: 169/98;
+    aspect-ratio: 3/2;
     object-fit: cover;
+    object-position: 30% center;
     border-radius: 18px;
     filter: grayscale(15%);
-    margin-top: -24px;
 }
 .hero-stat-card {
     position: absolute;
