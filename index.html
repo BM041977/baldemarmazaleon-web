@@ -557,12 +557,12 @@ footer {
     border: 1px solid rgba(242,238,227,0.14);
     box-shadow: 0 24px 60px rgba(0,0,0,0.35);
     aspect-ratio: 16/10;
+    background: var(--ink);
 }
 .modulo-shot img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    object-position: top;
+    object-fit: contain;
     display: block;
 }
 
@@ -596,12 +596,11 @@ footer {
     overflow: hidden;
     border: 1px solid rgba(242,238,227,0.14);
     position: relative;
+    background: var(--ink);
 }
-.diag-shot img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.diag-shot img { width: 100%; height: 100%; display: block; object-fit: contain; }
 .diag-shot.wide { grid-column: span 2; aspect-ratio: 21/9; }
-.diag-shot.wide img { object-position: top; }
 .diag-shot.sq { aspect-ratio: 4/3; }
-.diag-shot.sq img { object-position: top; }
 .diag-caption {
     position: absolute;
     bottom: 0; left: 0; right: 0;
