@@ -668,6 +668,40 @@ footer {
 @media (max-width: 420px) {
     .nav-login { display: none; }
 }
+#back-to-top {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--bone);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s;
+    z-index: 500;
+}
+#back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+#back-to-top:hover {
+    background: var(--terra);
+    color: var(--ink);
+}
+#back-to-top svg {
+    width: 20px;
+    height: 20px;
+}
 </style>
 </head>
 <body>
@@ -959,6 +993,10 @@ footer {
     </div>
 </footer>
 
+<button id="back-to-top" aria-label="Volver arriba">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
 <script>
 const municipios = ["Tuxtla Gutiérrez","San Cristóbal de las Casas","Tapachula","Comitán","Chiapa de Corzo","Palenque","Ocosingo","Villaflores","Cintalapa","Pichucalco","Berriozábal","Reforma","Frontera Comalapa","Las Margaritas","Yajalón","Bochil","Venustiano Carranza","Tonalá","Arriaga","Huixtla"];
 const track = document.getElementById('muniTrack');
@@ -972,6 +1010,18 @@ document.querySelectorAll('.modulo-tab').forEach(tab => {
         tab.classList.add('active');
         document.getElementById(tab.dataset.modulo).classList.add('active');
     });
+});
+
+const backToTop = document.getElementById('back-to-top');
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+    } else {
+        backToTop.classList.remove('visible');
+    }
+});
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 </script>
 
