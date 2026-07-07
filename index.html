@@ -314,7 +314,9 @@ section { padding: 100px 0; }
 .feature-card {
     background: var(--ink);
     padding: 32px 26px;
+    transition: transform 0.25s ease;
 }
+.feature-card:hover { transform: translateY(-3px); }
 .feature-card .icon {
     width: 40px;
     height: 40px;
@@ -740,6 +742,15 @@ footer {
     width: 20px;
     height: 20px;
 }
+.fade-init {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-init.fade-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 </style>
 </head>
 <body>
@@ -789,7 +800,7 @@ footer {
 
 <section id="electoral" class="electoral">
     <div class="wrap">
-        <div class="section-head">
+        <div class="section-head fade-init">
             <p class="eyebrow">Inteligencia Electoral</p>
             <h2>Datos que explican el resultado antes de que ocurra</h2>
             <p>Una plataforma construida sobre 26 años de elecciones en Chiapas — desde 1998 hasta hoy — para que partidos y candidatos entiendan el terreno antes de pisarlo.</p>
@@ -824,7 +835,7 @@ footer {
 
 <section id="sistema" class="sistema">
     <div class="wrap">
-        <div class="section-head">
+        <div class="section-head fade-init">
             <p class="eyebrow">Así se ve por dentro</p>
             <h2>Una plataforma real, no una promesa</h2>
             <p>Cada municipio de Chiapas, cada elección desde 1998, cada candidato — navegable, filtrable y exportable. Esto es lo que recibe quien solicita acceso.</p>
@@ -939,7 +950,7 @@ footer {
 
 <section id="servicios">
     <div class="wrap">
-        <div class="section-head">
+        <div class="section-head fade-init">
             <p class="eyebrow">Servicios</p>
             <h2>Consultoría para decisiones que no admiten error</h2>
         </div>
@@ -1049,6 +1060,21 @@ document.querySelectorAll('.modulo-tab').forEach(tab => {
         document.getElementById(tab.dataset.modulo).classList.add('active');
     });
 });
+
+const fadeEls = document.querySelectorAll('.fade-init');
+if ('IntersectionObserver' in window && fadeEls.length) {
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('fade-visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15 });
+    fadeEls.forEach(el => fadeObserver.observe(el));
+} else {
+    fadeEls.forEach(el => el.classList.add('fade-visible'));
+}
 
 const backToTop = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => {
