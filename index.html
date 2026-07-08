@@ -331,7 +331,8 @@ section { padding: 100px 0; }
 .feature-card {
     background: var(--ink);
     padding: 36px 30px;
-    transition: transform 0.25s ease;
+    position: relative;
+    transition: transform 0.25s var(--ease-out), background-color 0.25s ease, color 0.25s ease;
 }
 .feature-card .icon {
     width: 40px;
@@ -342,8 +343,9 @@ section { padding: 100px 0; }
     align-items: center;
     justify-content: center;
     margin-bottom: 22px;
+    transition: background-color 0.25s ease;
 }
-.feature-card .icon svg { width: 19px; height: 19px; stroke: var(--terra-soft); }
+.feature-card .icon svg { width: 19px; height: 19px; stroke: var(--terra-soft); transition: stroke 0.25s ease; }
 .feature-card h3 {
     font-size: 17px;
     margin-bottom: 8px;
@@ -351,6 +353,7 @@ section { padding: 100px 0; }
 .feature-card p {
     font-size: 14px;
     color: #B8B2A1;
+    transition: color 0.25s ease;
 }
 
 .electoral-cta {
@@ -794,7 +797,15 @@ footer {
         transform: translateY(-2px);
         box-shadow: 0 12px 28px rgba(22,20,15,0.22);
     }
-    .feature-card:hover { transform: translateY(-3px); }
+    .feature-card:hover {
+        background: var(--bone);
+        color: var(--ink);
+        transform: scale(1.03);
+        z-index: 2;
+    }
+    .feature-card:hover .icon { background: rgba(22,20,15,0.06); }
+    .feature-card:hover .icon svg { stroke: var(--terra); }
+    .feature-card:hover p { color: var(--stone); }
     .link-sistema:hover { color: var(--bone); }
     .servicio-row:hover h3 { color: var(--terra); }
     .modulo-tab:hover { background: rgba(242,238,227,0.1); color: var(--bone); }
