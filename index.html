@@ -365,14 +365,6 @@ section { padding: 100px 0; }
     position: relative;
     transition: transform 0.25s var(--ease-out), background-color 0.25s ease, color 0.25s ease;
 }
-.feature-card:active {
-    background: var(--bone);
-    color: var(--ink);
-    transition: background-color 0.15s ease, color 0.15s ease;
-}
-.feature-card:active .icon { background: rgba(22,20,15,0.06); }
-.feature-card:active .icon svg { stroke: var(--terra); }
-.feature-card:active p { color: var(--stone); }
 .feature-card .icon {
     width: 40px;
     height: 40px;
@@ -1184,7 +1176,6 @@ footer {
 </button>
 
 <script>
-document.addEventListener('touchstart', function() {}, { passive: true });
 const municipios = ["Tuxtla Gutiérrez","San Cristóbal de las Casas","Tapachula","Comitán","Chiapa de Corzo","Palenque","Ocosingo","Villaflores","Cintalapa","Pichucalco","Berriozábal","Reforma","Frontera Comalapa","Las Margaritas","Yajalón","Bochil","Venustiano Carranza","Tonalá","Arriaga","Huixtla"];
 const track = document.getElementById('muniTrack');
 const doubled = [...municipios, ...municipios];
