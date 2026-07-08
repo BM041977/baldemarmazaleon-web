@@ -110,6 +110,28 @@ nav {
     backdrop-filter: blur(8px);
     border-bottom: 1px solid var(--line);
 }
+.nav-toggle {
+    display: none;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+.nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--ink);
+    transition: transform 0.25s var(--ease-out), opacity 0.2s ease;
+}
+.nav-toggle[aria-expanded="true"] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 nav .wrap {
     display: flex;
     align-items: center;
@@ -153,7 +175,10 @@ nav .wrap {
     border-radius: 100px;
     font-size: 13px;
     font-weight: 600;
+    display: inline-block;
+    transition: transform 0.16s var(--ease-out);
 }
+.nav-cta:active { transform: scale(0.95); }
 .nav-login {
     font-size: 13px;
     font-weight: 600;
@@ -205,15 +230,18 @@ nav .wrap {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.16s var(--ease-out), box-shadow 0.2s ease;
 }
+.btn-primary:active { transform: scale(0.97); }
 .btn-secondary {
     border: 1.5px solid var(--ink);
     padding: 16px 30px;
     border-radius: 100px;
     font-weight: 600;
     font-size: 14px;
+    transition: transform 0.16s var(--ease-out), background-color 0.2s ease, color 0.2s ease;
 }
+.btn-secondary:active { transform: scale(0.97); }
 
 .hero-figure {
     position: relative;
@@ -606,7 +634,7 @@ footer {
     font-size: 13px;
     font-weight: 600;
     cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.16s var(--ease-out);
 }
 .modulo-tab.active {
     background: var(--terra);
@@ -717,7 +745,24 @@ footer {
 }
 
 @media (max-width: 880px) {
-    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bone);
+        border-bottom: 1px solid var(--line);
+        padding: 8px 20px 16px;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a {
+        padding: 14px 0;
+        border-bottom: 1px solid var(--line);
+    }
+    .nav-links a:last-child { border-bottom: none; }
     .hero-grid { grid-template-columns: 1fr; }
     .hero-figure { max-width: 360px; margin: 0 auto; }
     .feature-grid { grid-template-columns: repeat(2, 1fr); }
@@ -822,7 +867,11 @@ footer {
         color: var(--ink);
     }
     .diag-shot:hover img { transform: scale(1.06); }
+    .btn-secondary:hover { background: var(--ink); color: var(--bone); }
+    .nav-cta:hover { transform: translateY(-2px); }
 }
+.modulo-tab:active,
+.nav-toggle:active { transform: scale(0.95); }
 </style>
 </head>
 <body>
@@ -833,13 +882,16 @@ footer {
             <img src="/logo.webp" alt="Logo Baldemar Maza León" width="50" height="36">
             <span class="brand-text">Baldemar Maza León<span>Consultoría &amp; Capacitación</span></span>
         </a>
-        <div class="nav-links">
+        <div class="nav-links" id="navLinks">
             <a href="#electoral">Inteligencia Electoral</a>
             <a href="#sistema">Plataforma</a>
             <a href="#servicios">Servicios</a>
             <a href="#podcast">Podcast</a>
             <a href="#sobre-mi">Sobre mí</a>
         </div>
+        <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+            <span></span><span></span><span></span>
+        </button>
         <a href="https://mapa-electoral-v2.onrender.com/" target="_blank" rel="noopener" class="nav-login">Iniciar sesión</a>
         <a href="#contacto" class="nav-cta">Contactar</a>
     </div>
@@ -1147,6 +1199,21 @@ if ('IntersectionObserver' in window && fadeEls.length) {
 } else {
     fadeEls.forEach(el => el.classList.add('fade-visible'));
 }
+
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    navToggle.setAttribute('aria-expanded', isOpen);
+    navToggle.setAttribute('aria-label', isOpen ? 'Cerrar menú' : 'Abrir menú');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', 'Abrir menú');
+    });
+});
 
 const backToTop = document.getElementById('back-to-top');
 window.addEventListener('scroll', () => {
