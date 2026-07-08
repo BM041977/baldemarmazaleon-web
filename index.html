@@ -476,6 +476,11 @@ section { padding: 100px 0; }
     height: 7px;
     border-radius: 50%;
     background: var(--terra);
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.82); }
 }
 .podcast-visual {
     background: var(--ink);
@@ -772,6 +777,9 @@ footer {
 
 @media (prefers-reduced-motion: reduce) {
     .muni-strip .track {
+        animation: none;
+    }
+    .podcast-status .dot {
         animation: none;
     }
     .fade-init {
