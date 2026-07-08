@@ -51,10 +51,10 @@
 <style>
 :root {
     --ink:          #16140F;
-    --bone:         #F2EEE3;
-    --bone-soft:    #EAE4D4;
-    --stone:        #6B6558;
-    --line:         #DAD3C2;
+    --bone:         #F0EDEA;
+    --bone-soft:    #E8E2DC;
+    --stone:        #524D42;
+    --line:         #DBD1C7;
     --terra:        #A8754A;
     --terra-soft:   #E3D2BD;
     --white:        #FFFFFF;
@@ -80,6 +80,11 @@ h1, h2, h3 {
 }
 
 a { color: inherit; text-decoration: none; }
+
+:focus-visible {
+    outline: 2px solid var(--terra);
+    outline-offset: 2px;
+}
 
 .wrap {
     max-width: 1180px;
@@ -291,6 +296,10 @@ section { padding: 100px 0; }
     font-size: clamp(30px, 3.4vw, 42px);
     margin-top: 14px;
 }
+.section-head h2:first-child,
+.section-head h3:first-child {
+    margin-top: 0;
+}
 .section-head p {
     color: var(--stone);
     font-size: 16px;
@@ -305,11 +314,24 @@ section { padding: 100px 0; }
 
 .feature-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     background: rgba(242,238,227,0.14);
     border-radius: 16px;
     overflow: hidden;
+}
+.feature-card:nth-child(1),
+.feature-card:nth-child(4) {
+    grid-column: span 2;
+}
+.feature-card:nth-child(1) .icon,
+.feature-card:nth-child(4) .icon {
+    width: 48px;
+    height: 48px;
+}
+.feature-card:nth-child(1) h3,
+.feature-card:nth-child(4) h3 {
+    font-size: 20px;
 }
 .feature-card {
     background: var(--ink);
@@ -375,30 +397,32 @@ section { padding: 100px 0; }
 }
 
 /* ---------- SERVICIOS ---------- */
-.servicios-grid {
+.servicios-list {
+    margin-top: 40px;
+    border-top: 1px solid var(--line);
+}
+.servicio-row {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 140px 1fr;
     gap: 32px;
+    padding: 36px 0;
+    border-bottom: 1px solid var(--line);
+    align-items: baseline;
 }
-.servicio-card {
-    background: var(--white);
-    border: 1px solid var(--line);
-    border-radius: 16px;
-    padding: 40px;
-    transition: border-color 0.2s ease, transform 0.2s ease;
-}
-.servicio-card:hover { border-color: var(--terra); transform: translateY(-3px); }
-.servicio-card .tag {
+.servicio-row .tag {
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     color: var(--terra);
-    margin-bottom: 14px;
-    display: block;
 }
-.servicio-card h3 { font-size: 20px; margin-bottom: 10px; }
-.servicio-card p { color: var(--stone); font-size: 14.5px; }
+.servicio-row h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    transition: color 0.2s ease;
+}
+.servicio-row:hover h3 { color: var(--terra); }
+.servicio-row p { color: var(--stone); font-size: 15px; max-width: 480px; }
 
 /* ---------- PODCAST ---------- */
 .podcast {
@@ -578,7 +602,8 @@ footer {
     background: rgba(242,238,227,0.06);
     border: 1px solid rgba(242,238,227,0.14);
     color: #B8B2A1;
-    padding: 10px 20px;
+    padding: 14px 20px;
+    min-height: 44px;
     border-radius: 100px;
     font-size: 13px;
     font-weight: 600;
@@ -699,7 +724,9 @@ footer {
     .hero-grid { grid-template-columns: 1fr; }
     .hero-figure { max-width: 360px; margin: 0 auto; }
     .feature-grid { grid-template-columns: repeat(2, 1fr); }
-    .servicios-grid { grid-template-columns: 1fr; }
+    .feature-card:nth-child(1),
+    .feature-card:nth-child(4) { grid-column: span 2; }
+    .servicio-row { grid-template-columns: 1fr; gap: 8px; }
     .podcast-panel { grid-template-columns: 1fr; padding: 32px; }
     .about-grid { grid-template-columns: 1fr; }
     .about-photo { max-width: 320px; }
@@ -707,6 +734,9 @@ footer {
 }
 @media (max-width: 420px) {
     .nav-login { display: none; }
+    .feature-grid { grid-template-columns: 1fr; }
+    .feature-card:nth-child(1),
+    .feature-card:nth-child(4) { grid-column: span 1; }
 }
 #back-to-top {
     position: fixed;
@@ -751,6 +781,22 @@ footer {
     opacity: 1;
     transform: translateY(0);
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .muni-strip .track {
+        animation: none;
+    }
+    .fade-init {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+    .btn-primary:hover,
+    .modulo-tab,
+    .modulo-tab:hover {
+        transition: none;
+    }
+}
 </style>
 </head>
 <body>
@@ -758,7 +804,7 @@ footer {
 <nav>
     <div class="wrap">
         <a href="#" class="brand">
-            <img src="/logo.png" alt="Logo Baldemar Maza León">
+            <img src="/logo.webp" alt="Logo Baldemar Maza León" width="50" height="36">
             <span class="brand-text">Baldemar Maza León<span>Consultoría &amp; Capacitación</span></span>
         </a>
         <div class="nav-links">
@@ -789,7 +835,7 @@ footer {
                 </div>
             </div>
             <div class="hero-figure">
-                <img src="/imagenbal4.png" alt="Baldemar Maza León" class="hero-photo">
+                <img src="/imagenbal4.webp" alt="Baldemar Maza León" class="hero-photo" fetchpriority="high">
             </div>
         </div>
     </div>
@@ -801,7 +847,6 @@ footer {
 <section id="electoral" class="electoral">
     <div class="wrap">
         <div class="section-head fade-init">
-            <p class="eyebrow">Inteligencia Electoral</p>
             <h2>Datos que explican el resultado antes de que ocurra</h2>
             <p>Una plataforma construida sobre 26 años de elecciones en Chiapas, desde 1998 hasta hoy, para que partidos y candidatos entiendan el terreno antes de pisarlo.</p>
         </div>
@@ -836,7 +881,6 @@ footer {
 <section id="sistema" class="sistema">
     <div class="wrap">
         <div class="section-head fade-init">
-            <p class="eyebrow">Así se ve por dentro</p>
             <h2>Una plataforma real, no una promesa</h2>
             <p>Cada municipio de Chiapas, cada elección desde 1998, cada candidato: navegable, filtrable y exportable. Esto es lo que recibe quien solicita acceso.</p>
         </div>
@@ -857,7 +901,7 @@ footer {
                     <p class="desc">Vista política territorial. Cada sección coloreada por su partido ganador, con zoom hasta nivel de municipio y datos de listado nominal, votación y participación al pasar el cursor.</p>
                     <a href="#contacto" class="btn-light">Quiero mi acceso</a> <a href="https://mapa-electoral-v2.onrender.com/" target="_blank" rel="noopener" class="link-sistema">Entrar al sistema (si ya tienes acceso) →</a>
                 </div>
-                <div class="modulo-shot"><img src="/mapa-seccion.png" alt="Mapa por sección - Tuxtla Gutiérrez"></div>
+                <div class="modulo-shot"><img src="/mapa-seccion.webp" alt="Mapa por sección - Tuxtla Gutiérrez" loading="lazy"></div>
             </div>
         </div>
 
@@ -869,7 +913,7 @@ footer {
                     <p class="desc">Vista por fuerza electoral. Filtra por cada partido y observa dónde tiene presencia, aunque no haya ganado. Top 3 más votados por sección y municipio con un clic.</p>
                     <a href="#contacto" class="btn-light">Quiero mi acceso</a> <a href="https://mapa-electoral-v2.onrender.com/" target="_blank" rel="noopener" class="link-sistema">Entrar al sistema (si ya tienes acceso) →</a>
                 </div>
-                <div class="modulo-shot"><img src="/mapa-partido.png" alt="Mapa por partido - Ocosingo"></div>
+                <div class="modulo-shot"><img src="/mapa-partido.webp" alt="Mapa por partido - Ocosingo" loading="lazy"></div>
             </div>
         </div>
 
@@ -881,7 +925,7 @@ footer {
                     <p class="desc">Vista tabular completa de las 2,278 secciones del estado con ganador, votos, participación y margen. Filtra por municipio, distrito o partido, exporta todo a Excel.</p>
                     <a href="#contacto" class="btn-light">Quiero mi acceso</a> <a href="https://mapa-electoral-v2.onrender.com/" target="_blank" rel="noopener" class="link-sistema">Entrar al sistema (si ya tienes acceso) →</a>
                 </div>
-                <div class="modulo-shot"><img src="/datos-seccion.png" alt="Datos por sección - tabla filtrable"></div>
+                <div class="modulo-shot"><img src="/datos-seccion.webp" alt="Datos por sección - tabla filtrable" loading="lazy"></div>
             </div>
         </div>
 
@@ -893,7 +937,7 @@ footer {
                     <p class="desc">26 años de historia electoral por sección. Visualiza quién ganó en cada elección desde 1998 hasta 2024. Cambia el año y ve la evolución del voto, municipio por municipio.</p>
                     <a href="#contacto" class="btn-light">Quiero mi acceso</a> <a href="https://mapa-electoral-v2.onrender.com/" target="_blank" rel="noopener" class="link-sistema">Entrar al sistema (si ya tienes acceso) →</a>
                 </div>
-                <div class="modulo-shot"><img src="/historico.png" alt="Histórico electoral - Bochil 2015"></div>
+                <div class="modulo-shot"><img src="/historico.webp" alt="Histórico electoral - Bochil 2015" loading="lazy"></div>
             </div>
         </div>
 
@@ -905,39 +949,38 @@ footer {
                     <p class="desc">Historial completo de candidatos desde 1998 hasta 2024. Busca por nombre o explora quiénes han competido en un municipio: partidos, cargos, victorias y derrotas en línea de tiempo.</p>
                     <a href="#contacto" class="btn-light">Quiero mi acceso</a> <a href="https://mapa-electoral-v2.onrender.com/" target="_blank" rel="noopener" class="link-sistema">Entrar al sistema (si ya tienes acceso) →</a>
                 </div>
-                <div class="modulo-shot"><img src="/trayectoria.png" alt="Trayectoria de candidatos - perfil individual"></div>
+                <div class="modulo-shot"><img src="/trayectoria.webp" alt="Trayectoria de candidatos - perfil individual" loading="lazy"></div>
             </div>
         </div>
 
         <div class="diag-feature">
             <div class="diag-feature-head">
-                <p class="eyebrow">El producto estrella</p>
                 <h3>Diagnósticos electorales municipales</h3>
                 <p>123 municipios analizados. Un documento de más de 49 páginas por municipio: contexto territorial, historia política, análisis de la elección 2024, escenarios 2027 y recomendaciones estratégicas, listo para descargar en PDF.</p>
             </div>
             <div class="diag-mosaic">
                 <div class="diag-shot">
-                    <img src="/diag-galeria.png" alt="Galería de 123 municipios">
+                    <img src="/diag-galeria.webp" alt="Galería de 123 municipios" loading="lazy">
                     <div class="diag-caption">123 municipios · uno por uno</div>
                 </div>
                 <div class="diag-shot">
-                    <img src="/diag-indice.png" alt="Índice del documento">
+                    <img src="/diag-indice.webp" alt="Índice del documento" loading="lazy">
                     <div class="diag-caption">Más de 49 páginas por municipio</div>
                 </div>
                 <div class="diag-shot">
-                    <img src="/diag-votacion.png" alt="Votación municipal por elección">
+                    <img src="/diag-votacion.webp" alt="Votación municipal por elección" loading="lazy">
                     <div class="diag-caption">26 años de historia electoral</div>
                 </div>
                 <div class="diag-shot">
-                    <img src="/diag-mapacalor.png" alt="Mapa de calor del partido ganador">
+                    <img src="/diag-mapacalor.webp" alt="Mapa de calor del partido ganador" loading="lazy">
                     <div class="diag-caption">Control territorial por partido</div>
                 </div>
                 <div class="diag-shot">
-                    <img src="/diag-zonas.png" alt="Zonas estratégicas para campaña 2027">
+                    <img src="/diag-zonas.webp" alt="Zonas estratégicas para campaña 2027" loading="lazy">
                     <div class="diag-caption">Estrategia de campaña 2027</div>
                 </div>
                 <div class="diag-shot">
-                    <img src="/preguntas-estrategicas.png" alt="Preguntas estratégicas para el candidato">
+                    <img src="/preguntas-estrategicas.webp" alt="Preguntas estratégicas para el candidato" loading="lazy">
                     <div class="diag-caption">Preguntas que responde el diagnóstico</div>
                 </div>
             </div>
@@ -951,24 +994,29 @@ footer {
 <section id="servicios">
     <div class="wrap">
         <div class="section-head fade-init">
-            <p class="eyebrow">Servicios</p>
             <h2>Consultoría para decisiones que no admiten error</h2>
         </div>
-        <div class="servicios-grid">
-            <div class="servicio-card">
+        <div class="servicios-list">
+            <div class="servicio-row">
                 <span class="tag">Electoral</span>
-                <h3>Diagnóstico municipal</h3>
-                <p>Análisis a la medida de un municipio específico: histórico, fuerzas en competencia y escenarios.</p>
+                <div>
+                    <h3>Diagnóstico municipal</h3>
+                    <p>Análisis a la medida de un municipio específico: histórico, fuerzas en competencia y escenarios.</p>
+                </div>
             </div>
-            <div class="servicio-card">
+            <div class="servicio-row">
                 <span class="tag">Estrategia</span>
-                <h3>Asesoría de campaña</h3>
-                <p>Lectura del terreno electoral para definir prioridades, mensaje y despliegue territorial.</p>
+                <div>
+                    <h3>Asesoría de campaña</h3>
+                    <p>Lectura del terreno electoral para definir prioridades, mensaje y despliegue territorial.</p>
+                </div>
             </div>
-            <div class="servicio-card">
+            <div class="servicio-row">
                 <span class="tag">Empresarial</span>
-                <h3>Capacitación y consultoría</h3>
-                <p>Acompañamiento a organizaciones en decisiones estratégicas y desarrollo de equipos.</p>
+                <div>
+                    <h3>Capacitación y consultoría</h3>
+                    <p>Acompañamiento a organizaciones en decisiones estratégicas y desarrollo de equipos.</p>
+                </div>
             </div>
         </div>
     </div>
@@ -996,9 +1044,8 @@ footer {
 <section id="sobre-mi">
     <div class="wrap">
         <div class="about-grid">
-            <img src="/baldemar.png" alt="Baldemar Maza León" class="about-photo">
+            <img src="/baldemar.webp" alt="Baldemar Maza León" class="about-photo" loading="lazy">
             <div>
-                <p class="eyebrow">Sobre mí</p>
                 <h2>Consultor independiente, lectura de campo</h2>
                 <p style="color:var(--stone); margin-top:18px; font-size:16px; max-width:520px;">Trabajo en Tuxtla Gutiérrez, Chiapas, en la intersección entre datos electorales y estrategia empresarial. Construyo herramientas propias porque las decisiones serias necesitan información que no se improvisa.</p>
                 <div class="about-list">
@@ -1026,7 +1073,6 @@ footer {
 
 <section id="contacto" class="contacto">
     <div class="wrap">
-        <p class="eyebrow" style="color:#D9C1A3;">Hablemos</p>
         <h2>¿Listo para ver los datos de tu municipio?</h2>
         <p>Diagnósticos individuales, paquetes por región o acceso completo a la plataforma. Escríbeme directamente.</p>
         <div class="contact-actions">
