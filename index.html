@@ -515,13 +515,15 @@ section { padding: 100px 0; }
 .podcast-visual {
     background: var(--ink);
     border-radius: 16px;
-    aspect-ratio: 1/1;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
     overflow: hidden;
+    padding: 24px;
 }
+.podcast-visual iframe { border-radius: 12px; width: 100%; }
 .podcast-visual::before {
     content: '';
     position: absolute;
@@ -1113,13 +1115,16 @@ footer {
                 <div class="podcast-mark">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4"/></svg>
                 </div>
-                <h2>El Libro que No Leíste</h2>
-                <p class="podcast-tagline">"Y por eso sigues donde estás"</p>
-                <p class="desc">Un podcast para emprendedores que prefieren la verdad incómoda a la motivación vacía. Conversaciones directas sobre lo que realmente frena a un negocio y lo que se necesita para moverlo.</p>
-                <span class="podcast-status"><span class="dot"></span>En producción</span>
+                <h2>Libros, poder y las jugadas que nadie explica</h2>
+                <p class="desc">Empresas, libros, elecciones y estrategia. Analizamos las ideas, decisiones y jugadas detrás del poder, los negocios y la política.</p>
+                <a href="https://open.spotify.com/episode/00Yic4JbGNtnHHDgQw99aH" target="_blank" rel="noopener" class="btn-primary" style="margin-top:8px;">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.59 14.4a.62.62 0 01-.85.21c-2.33-1.42-5.26-1.75-8.72-.96a.62.62 0 11-.28-1.21c3.79-.87 7.03-.5 9.64 1.1.3.18.39.57.21.86zm1.22-2.72a.78.78 0 01-1.07.26c-2.67-1.64-6.73-2.12-9.88-1.16a.78.78 0 01-.45-1.49c3.6-1.09 8.08-.56 11.14 1.32.37.23.49.72.26 1.07zm.11-2.83c-3.2-1.9-8.49-2.08-11.55-1.15a.93.93 0 11-.54-1.79c3.51-1.06 9.35-.86 13.03 1.32a.94.94 0 01-.94 1.62z"/></svg>
+                    Escuchar en Spotify
+                </a>
             </div>
             <div class="podcast-visual">
-                <p class="podcast-quote">"La mayoría de los negocios no fracasan por falta de información. Fracasan porque nadie leyó el libro que ya tenían enfrente."<span>Próximamente</span></p>
+                <img src="podcast-cover.webp" alt="Portada del podcast El Libro que No Leíste" style="width:100%; max-width:220px; border-radius:12px; margin-bottom:20px;">
+                <iframe src="https://open.spotify.com/embed/episode/00Yic4JbGNtnHHDgQw99aH?utm_source=generator" width="100%" height="232" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </div>
     </div>
