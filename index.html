@@ -522,11 +522,12 @@ section { padding: 100px 0; }
     overflow: hidden;
     padding: 24px;
 }
-.podcast-visual iframe { border-radius: 12px; width: 100%; }
+.podcast-visual iframe { border-radius: 12px; width: 100%; position: relative; z-index: 1; }
 .podcast-visual::before {
     content: '';
     position: absolute;
     inset: 0;
+    pointer-events: none;
     background:
         repeating-linear-gradient(0deg, transparent, transparent 38px, rgba(242,238,227,0.06) 38px, rgba(242,238,227,0.06) 39px);
 }
