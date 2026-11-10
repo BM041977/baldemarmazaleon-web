@@ -870,6 +870,23 @@ footer {
 }
 .modulo-tab:active,
 .nav-toggle:active { transform: scale(0.95); }
+/* Logo mas grande y menu ordenado */
+.brand { flex-shrink: 0; margin-right: 24px; }
+.brand img { height: 120px; width: auto; margin: -28px 0 -28px -8px; }
+.nav-links { gap: clamp(14px, 1.6vw, 36px); }
+.nav-links a { white-space: nowrap; }
+@media (min-width: 881px) and (max-width: 1240px) {
+    .nav-toggle { display: flex; }
+    .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bone); border-bottom: 1px solid var(--line); padding: 8px 20px 16px; }
+    .nav-links.open { display: flex; }
+    .nav-links a { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .nav-links a:last-child { border-bottom: none; }
+    .nav-login { display: none; }
+}
+@media (max-width: 880px) {
+    .brand { margin-right: 0; }
+    .brand img { height: 96px; margin: -22px 0 -22px -6px; }
+}
 </style>
 <!-- PostHog analytics -->
 <script>
