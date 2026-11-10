@@ -111,6 +111,56 @@ footer{padding:36px 0;text-align:center;font-size:13px;color:var(--stone)}
  tbody tr.hit td{background:none}
  .dl{padding:24px}
 }
+
+.picker{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:20px}
+.picker .search{flex:1;min-width:260px;position:relative}
+.sug{position:absolute;z-index:30;left:0;right:0;top:calc(100% + 6px);background:var(--white);border:1px solid var(--line);border-radius:14px;box-shadow:0 18px 40px rgba(22,20,15,.16);max-height:300px;overflow:auto;list-style:none;padding:6px}
+.sug li{padding:11px 14px;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;gap:12px;font-size:15px}
+.sug li small{color:var(--stone);font-size:12px;align-self:center}
+.sug li.on,.sug li:hover{background:var(--terra-soft)}
+.chip{font:inherit;font-size:13px;font-weight:600;padding:12px 20px;border-radius:100px;border:1.5px solid var(--ink);background:none;color:var(--ink);cursor:pointer;transition:transform .16s var(--ease-out)}
+.chip:active{transform:scale(.96)}
+.panel{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:30px;margin-bottom:44px}
+.panel .ph{display:flex;justify-content:space-between;gap:18px;align-items:flex-end;flex-wrap:wrap;margin-bottom:6px}
+.panel h2{font-size:clamp(28px,3.4vw,40px)}
+.panel .meta{color:var(--stone);font-size:14px}
+.panel .meta b{color:var(--ink);font-family:'Fraunces',serif;font-size:22px;font-weight:500}
+.cols{display:grid;grid-template-columns:1fr 1.4fr;gap:44px;margin-top:26px}
+.cols h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--stone);font-weight:600;margin-bottom:14px}
+.sx{display:flex;height:46px;border-radius:12px;overflow:hidden;color:var(--bone);font-weight:600;font-size:14px}
+.sx div{display:flex;align-items:center;padding:0 14px;white-space:nowrap}
+.sx .m{background:var(--terra)}.sx .h{background:var(--ink)}
+.sxl{display:flex;justify-content:space-between;font-size:13px;color:var(--stone);margin-top:8px}
+.ag{display:grid;grid-template-columns:84px 1fr 200px;gap:8px 14px;align-items:center;font-size:14px}
+.ag .lb{color:var(--stone);white-space:nowrap}
+.tr{position:relative;height:22px;background:var(--bone-soft);border-radius:8px}
+.tr i{position:absolute;left:0;top:0;bottom:0;background:var(--terra);border-radius:8px;transition:width .5s var(--ease-out)}
+.tr s{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--ink);text-decoration:none}
+.ag .vl{font-variant-numeric:tabular-nums;white-space:nowrap}
+.ag .vl small{color:var(--stone);font-size:12px;margin-left:4px}
+.leg{font-size:12px;color:var(--stone);margin-top:12px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.leg b{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--terra);margin-right:6px;vertical-align:-1px}
+.leg s{display:inline-block;width:2px;height:12px;background:var(--ink);margin-right:6px;vertical-align:-2px}
+.insight{margin-top:24px;padding:16px 18px;background:var(--bone);border-left:3px solid var(--terra);border-radius:0 10px 10px 0;font-size:15px;color:var(--ink)}
+.subh{font-size:clamp(22px,2.4vw,28px)}
+.subp{color:var(--stone);font-size:14px;margin:6px 0 16px}
+.top{display:flex;flex-direction:column;gap:8px;margin-bottom:36px}
+.top button{font:inherit;display:grid;grid-template-columns:200px 1fr 90px;gap:14px;align-items:center;background:none;border:none;text-align:left;cursor:pointer;padding:6px 8px;border-radius:10px;color:var(--ink)}
+.top button .nm{font-family:'Fraunces',serif;font-size:16px}
+.top button .tr{height:18px}
+.top button .vl{text-align:right;font-variant-numeric:tabular-nums;font-size:14px}
+.all{margin-bottom:8px}
+.all summary{cursor:pointer;font-weight:600;font-size:15px;padding:14px 0;list-style:none;display:flex;gap:10px;align-items:center}
+.all summary::before{content:"+";display:inline-flex;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--ink);align-items:center;justify-content:center;font-size:16px;line-height:1}
+.all[open] summary::before{content:"–"}
+.all summary::-webkit-details-marker{display:none}
+@media(max-width:880px){
+ .cols{grid-template-columns:1fr;gap:30px}
+ .panel{padding:22px 18px}
+ .ag{grid-template-columns:70px 1fr}.ag .vl{grid-column:1/-1;margin:-4px 0 6px 0}
+ .top button{grid-template-columns:1fr 70px;grid-template-areas:"n v" "b b";gap:4px 10px}
+ .top button .nm{grid-area:n}.top button .vl{grid-area:v}.top button .tr{grid-area:b}
+}
 #back-to-top{position:fixed;right:20px;bottom:20px;width:46px;height:46px;border-radius:50%;background:var(--ink);color:var(--bone);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease}
 #back-to-top.visible{opacity:1;pointer-events:auto}
 #back-to-top svg{width:20px;height:20px}
@@ -147,21 +197,32 @@ posthog.init('phc_xmZMnSQ8KY6RKychZWiMYTZFSfLd4Qu3PoZwEQjkXFZ4',{api_host:'https
 </div></header>
 
 <section class="tool"><div class="wrap">
- <div class="toolbar">
-  <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
-   <input id="q" type="search" placeholder="Busca tu municipio, por ejemplo Tuxtla" autocomplete="off" aria-label="Buscar municipio"></label>
-  <span class="count" id="count"></span>
+ <div class="picker">
+  <div class="search" id="sbox">
+   <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+   <input id="q" type="text" role="combobox" aria-expanded="false" aria-controls="sug" aria-autocomplete="list" placeholder="Elige tu municipio: escribe Tuxtla, Tapachula, Ocosingo…" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Buscar municipio">
+   <ul id="sug" class="sug" role="listbox" hidden></ul>
+  </div>
+  <button class="chip" id="reset" type="button">Todo Chiapas</button>
  </div>
- <div class="tablewrap">
-  <table id="t">
-   <thead><tr>
-    <th data-k="0">Municipio</th><th data-k="1">Lista nominal</th><th data-k="2">% Mujeres</th><th data-k="3">% Hombres</th>
-    <th data-k="4">18-29 años</th><th data-k="5">30-44 años</th><th data-k="6">45-59 años</th><th data-k="7">60+ años</th>
-   </tr></thead>
-   <tbody id="tb"></tbody>
-  </table>
-  <div class="empty" id="empty">No encontré ese municipio. Prueba con otra parte del nombre.</div>
- </div>
+ <div class="panel" id="panel" aria-live="polite"></div>
+
+ <h3 class="subh">Los 10 municipios con más lista nominal</h3>
+ <p class="subp">Toca uno para ver su detalle.</p>
+ <div class="top" id="top"></div>
+
+ <details class="all">
+  <summary>Ver los 124 municipios en una tabla</summary>
+  <div class="tablewrap">
+   <table id="t">
+    <thead><tr>
+     <th data-k="0">Municipio</th><th data-k="1">Lista nominal</th><th data-k="2">% Mujeres</th><th data-k="3">% Hombres</th>
+     <th data-k="4">18-29 años</th><th data-k="5">30-44 años</th><th data-k="6">45-59 años</th><th data-k="7">60+ años</th>
+    </tr></thead>
+    <tbody id="tb"></tbody>
+   </table>
+  </div>
+ </details>
  <p class="note"><b>Cómo leerla.</b> Los porcentajes por edad son sobre la lista nominal de cada municipio. El total de Chiapas incluye además 14,198 chiapanecos inscritos en el extranjero, que no pertenecen a ningún municipio.</p>
 
  <p class="note"><b>Fuente de los datos:</b> <a href="https://ine.mx/transparencia/datos-abiertos/#/tematica/padron-electoral" target="_blank" rel="noopener" style="text-decoration:underline;text-decoration-color:var(--terra);text-underline-offset:3px">INE, Padrón Electoral y Lista Nominal, datos abiertos</a>, corte al 29 de octubre de 2026.<br><b>Elaboración:</b> integración por sección y municipio, asignación del municipio por su clave y cálculo de porcentajes por sexo y rangos de edad, por Baldemar Maza León · Consultoría &amp; Inteligencia Electoral.</p>
@@ -194,23 +255,78 @@ document.getElementById('s-m').textContent = pc(tot.m, tot.ln).toFixed(1) + '%';
 document.getElementById('s-h').textContent = pc(tot.h, tot.ln).toFixed(1) + '%';
 document.getElementById('b-m').style.width = pc(tot.m, tot.ln) + '%';
 document.getElementById('b-h').style.width = pc(tot.h, tot.ln) + '%';
-const tb = document.getElementById('tb'), q = document.getElementById('q'), cnt = document.getElementById('count'), empty = document.getElementById('empty');
+const tb = document.getElementById('tb');
 let sortK = 1, sortDir = -1;
 const L = ['', 'Lista nominal', 'Mujeres', 'Hombres', '18-29 años', '30-44 años', '45-59 años', '60+ años'];
 function cell(p, k){ return '<td data-l="'+L[k]+'"><div class="cell"><span>'+p.toFixed(1)+'%</span>'+(k>=4?'<div class="bar"><i style="width:'+Math.min(100,p*2.2)+'%"></i></div>':'')+'</div></td>'; }
 function draw(){
-  const t = norm(q.value.trim());
-  let list = rows.filter(r => !t || norm(r.n).includes(t));
-  list.sort((a,b)=> sortK===0 ? sortDir*a.n.localeCompare(b.n,'es') : sortDir*(a.v[sortK]-b.v[sortK]));
-  tb.innerHTML = list.map(r => '<tr'+(t?' class="hit"':'')+'><td>'+r.n+'</td><td data-l="Lista nominal">'+fmt(r.ln)+'</td>'+[2,3,4,5,6,7].map(k=>cell(r.v[k],k)).join('')+'</tr>').join('');
-  empty.style.display = list.length ? 'none' : 'block';
-  cnt.textContent = list.length === rows.length ? rows.length + ' municipios' : list.length + ' de ' + rows.length + ' municipios';
+  const list = rows.slice().sort((a,b)=> sortK===0 ? sortDir*a.n.localeCompare(b.n,'es') : sortDir*(a.v[sortK]-b.v[sortK]));
+  tb.innerHTML = list.map(r => '<tr><td>'+r.n+'</td><td data-l="Lista nominal">'+fmt(r.ln)+'</td>'+[2,3,4,5,6,7].map(k=>cell(r.v[k],k)).join('')+'</tr>').join('');
   document.querySelectorAll('thead th').forEach(th => th.setAttribute('aria-sort', +th.dataset.k===sortK ? (sortDir>0?'ascending':'descending') : 'none'));
 }
 document.querySelectorAll('thead th').forEach(th => th.addEventListener('click', () => {
   const k = +th.dataset.k; if (k===sortK) sortDir = -sortDir; else { sortK = k; sortDir = k===0 ? 1 : -1; } draw();
 }));
-q.addEventListener('input', draw);
+
+// ---- Panel de municipio, gráficas y buscador
+const AG = ['18-29 años','30-44 años','45-59 años','60+ años'];
+const chi = {ln: tot.ln, h: tot.h, m: tot.m, e: [0,1,2,3].map(i => rows.reduce((s,r)=>s+r.e[i],0))};
+const rank = rows.slice().sort((a,b)=>b.ln-a.ln);
+const panel = document.getElementById('panel'), q = document.getElementById('q'), sug = document.getElementById('sug');
+function renderPanel(r){
+  const d = r || {n:'Todo Chiapas', ln:chi.ln, h:chi.h, m:chi.m, e:chi.e};
+  const pm = pc(d.m,d.ln), ph = pc(d.h,d.ln);
+  const ages = d.e.map((x,i)=>({lb:AG[i], p:pc(x,d.ln), c:pc(chi.e[i],chi.ln), n:x}));
+  const pos = r ? rank.findIndex(x=>x.n===r.n)+1 : 0;
+  const meta = r ? '<b>'+fmt(d.ln)+'</b> en la lista nominal · '+pc(d.ln,chi.ln).toFixed(1)+'% de Chiapas · lugar '+pos+' de '+rows.length
+               : '<b>'+fmt(d.ln + EXT)+'</b> en la lista nominal (incluye '+fmt(EXT)+' en el extranjero)';
+  let insight = '';
+  if (r) {
+    const dev = ages.map(x=>({lb:x.lb, d:x.p-x.c})).sort((u,v)=>Math.abs(v.d)-Math.abs(u.d))[0];
+    insight = Math.abs(dev.d) < 2 ? 'La distribución por edad es <b>muy parecida al promedio de Chiapas</b>.'
+      : 'Lo que más se aparta del promedio de Chiapas: las personas de <b>'+dev.lb+'</b> pesan '+Math.abs(dev.d).toFixed(1)+' puntos '+(dev.d>0?'más':'menos')+'.';
+    const dm = pm - pc(chi.m,chi.ln);
+    if (Math.abs(dm) >= 2) insight += ' Hay '+(dm>0?'más':'menos')+' mujeres que en el conjunto del estado ('+pm.toFixed(1)+'% contra '+pc(chi.m,chi.ln).toFixed(1)+'%).';
+  }
+  panel.innerHTML =
+    '<div class="ph"><h2>'+d.n+'</h2><div class="meta">'+meta+'</div></div>'+
+    '<div class="cols"><div><h4>Mujeres y hombres</h4>'+
+      '<div class="sx"><div class="m" style="width:'+pm+'%">'+pm.toFixed(1)+'%</div><div class="h" style="width:'+ph+'%">'+ph.toFixed(1)+'%</div></div>'+
+      '<div class="sxl"><span>Mujeres · '+fmt(d.m)+'</span><span>Hombres · '+fmt(d.h)+'</span></div></div>'+
+    '<div><h4>Por rangos de edad</h4><div class="ag">'+ages.map(a=>
+      '<span class="lb">'+a.lb+'</span><div class="tr"><i style="width:'+Math.min(100,a.p/50*100)+'%"></i>'+(r?'<s style="left:'+Math.min(100,a.c/50*100)+'%"></s>':'')+'</div>'+
+      '<span class="vl"><b>'+a.p.toFixed(1)+'%</b>'+(r?'<small>'+(a.p-a.c>=0?'+':'')+(a.p-a.c).toFixed(1)+' pts vs Chiapas</small>':'<small>'+fmt(a.n)+'</small>')+'</span>').join('')+'</div>'+
+      (r?'<div class="leg"><span><b></b>Este municipio</span><span><s></s>Promedio de Chiapas</span></div>':'')+'</div></div>'+
+    (insight?'<p class="insight">'+insight+'</p>':'');
+}
+function pick(r){ q.value = r ? r.n : ''; renderPanel(r); hideSug(); }
+let items = [], cur = -1;
+function hideSug(){ sug.hidden = true; q.setAttribute('aria-expanded','false'); cur = -1; }
+function showSug(){
+  const t = norm(q.value.trim());
+  items = (t ? rank.filter(r=>norm(r.n).includes(t)) : rank.slice(0,8)).slice(0,10);
+  if (!items.length) { sug.innerHTML = '<li style="cursor:default">No encontré ese municipio</li>'; }
+  else sug.innerHTML = items.map((r,i)=>'<li role="option" data-i="'+i+'"><span>'+r.n+'</span><small>'+fmt(r.ln)+'</small></li>').join('');
+  sug.hidden = false; q.setAttribute('aria-expanded','true'); cur = -1;
+}
+q.addEventListener('input', showSug);
+q.addEventListener('focus', () => { q.select(); showSug(); });
+q.addEventListener('keydown', e => {
+  const lis = sug.querySelectorAll('li[data-i]');
+  if (e.key==='ArrowDown'){ e.preventDefault(); if(sug.hidden) showSug(); cur=Math.min(cur+1,lis.length-1); }
+  else if (e.key==='ArrowUp'){ e.preventDefault(); cur=Math.max(cur-1,0); }
+  else if (e.key==='Enter'){ e.preventDefault(); if(items.length) pick(items[cur>=0?cur:0]); return; }
+  else if (e.key==='Escape'){ hideSug(); return; }
+  else return;
+  lis.forEach((li,i)=>li.classList.toggle('on',i===cur));
+});
+sug.addEventListener('mousedown', e => { const li = e.target.closest('li[data-i]'); if(li){ e.preventDefault(); pick(items[+li.dataset.i]); } });
+document.addEventListener('click', e => { if(!document.getElementById('sbox').contains(e.target)) hideSug(); });
+document.getElementById('reset').addEventListener('click', () => pick(null));
+const topEl = document.getElementById('top'), mx = rank[0].ln;
+topEl.innerHTML = rank.slice(0,10).map((r,i)=>'<button type="button" data-i="'+i+'"><span class="nm">'+r.n+'</span><div class="tr"><i style="width:'+(r.ln/mx*100)+'%"></i></div><span class="vl">'+fmt(r.ln)+'</span></button>').join('');
+topEl.addEventListener('click', e => { const b = e.target.closest('button'); if(!b) return; pick(rank[+b.dataset.i]); panel.scrollIntoView({behavior:'smooth',block:'center'}); });
+renderPanel(null);
 draw();
 const navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navLinks');
 navToggle.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');navToggle.setAttribute('aria-expanded',o);navToggle.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú')});
