@@ -4,12 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Padrón y lista nominal de Chiapas por municipio · Baldemar Maza León</title>
-<meta name="description" content="Lista nominal de los 124 municipios de Chiapas con porcentaje de mujeres y hombres y por rangos de edad. Datos abiertos del INE, corte al 29 de octubre de 2026. Descarga el Excel con las 2,308 secciones.">
+<meta name="description" content="Lista nominal de los 124 municipios de Chiapas con porcentaje de mujeres y hombres y por rangos de edad. Datos abiertos del INE, corte al 29 de octubre de 2026.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://baldemarmazaleon.com/padron.html">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Padrón y lista nominal de Chiapas por municipio">
-<meta property="og:description" content="124 municipios, por sexo y edad, con descarga en Excel. Datos abiertos del INE, corte 29-oct-2026.">
+<meta property="og:description" content="124 municipios, por sexo y edad. Datos abiertos del INE, corte 29-oct-2026.">
 <meta property="og:image" content="https://baldemarmazaleon.com/imagenbal4.png">
 <meta property="og:url" content="https://baldemarmazaleon.com/padron.html">
 <meta property="og:locale" content="es_MX">
@@ -164,14 +164,7 @@ posthog.init('phc_xmZMnSQ8KY6RKychZWiMYTZFSfLd4Qu3PoZwEQjkXFZ4',{api_host:'https
  </div>
  <p class="note"><b>Cómo leerla.</b> Los porcentajes por edad son sobre la lista nominal de cada municipio. El total de Chiapas incluye además 14,198 chiapanecos inscritos en el extranjero, que no pertenecen a ningún municipio.</p>
 
- <div class="dl">
-  <div>
-   <h2>Descarga el Excel con las 2,308 secciones</h2>
-   <p>Un solo archivo con la lista nominal por sección electoral, por sexo y por rangos de edad, con el municipio ya identificado en cada fila, más un resumen por municipio. Listo para filtrar o cruzar con tus propios datos.</p>
-  </div>
-  <a class="btn-primary" id="dl" href="/padron/PADRON_LN_CHIAPAS_29-10-2026.xlsx" download>Descargar Excel (1.4 MB)</a>
- </div>
- <p class="note"><b>Fuente.</b> Instituto Nacional Electoral (DERFE), estadística del padrón electoral y la lista nominal, datos abiertos, corte al 29 de octubre de 2026. La unión de los archivos, el cálculo de porcentajes y la asignación del nombre del municipio por su clave son trabajo propio. Esta página no es una publicación del INE ni cuenta con su aval.</p>
+ <p class="note"><b>Fuente de los datos:</b> <a href="https://ine.mx/transparencia/datos-abiertos/#/tematica/padron-electoral" target="_blank" rel="noopener" style="text-decoration:underline;text-decoration-color:var(--terra);text-underline-offset:3px">INE, Padrón Electoral y Lista Nominal, datos abiertos</a>, corte al 29 de octubre de 2026.<br><b>Elaboración:</b> integración por sección y municipio, asignación del municipio por su clave y cálculo de porcentajes por sexo y rangos de edad, por Baldemar Maza León · Consultoría &amp; Inteligencia Electoral.</p>
 </div></section>
 
 <section class="contacto"><div class="wrap">
@@ -219,7 +212,6 @@ document.querySelectorAll('thead th').forEach(th => th.addEventListener('click',
 }));
 q.addEventListener('input', draw);
 draw();
-document.getElementById('dl').addEventListener('click', () => { try { posthog.capture('descarga_padron_excel'); } catch(e){} });
 const navToggle=document.getElementById('navToggle'),navLinks=document.getElementById('navLinks');
 navToggle.addEventListener('click',()=>{const o=navLinks.classList.toggle('open');navToggle.setAttribute('aria-expanded',o);navToggle.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú')});
 const btt=document.getElementById('back-to-top');
