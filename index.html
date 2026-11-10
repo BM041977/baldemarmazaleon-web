@@ -871,12 +871,13 @@ footer {
 .modulo-tab:active,
 .nav-toggle:active { transform: scale(0.95); }
 /* Logo mas grande y menu ordenado */
+.wrap { max-width: 1360px; }
 .brand { flex-shrink: 0; margin-right: 16px; }
 .brand img { height: 110px; width: auto; margin: -25px 0 -25px -8px; }
 .nav-links { gap: clamp(12px, 1.3vw, 32px); }
 .nav-login { margin-left: 16px; }
 .nav-links a { white-space: nowrap; }
-@media (min-width: 881px) and (max-width: 1400px) {
+@media (min-width: 881px) and (max-width: 1180px) {
     .nav-toggle { display: flex; }
     .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bone); border-bottom: 1px solid var(--line); padding: 8px 20px 16px; }
     .nav-links.open { display: flex; }
