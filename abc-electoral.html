@@ -317,9 +317,16 @@ section.part.in{animation:rise .45s var(--ease-out)}
 .lfund b{color:var(--ink)}
 .norm.wide{margin-top:18px}.norm.wide h3{font-size:22px;margin-bottom:16px}.norm.wide ul{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
 .qfil{margin:0 0 14px}
-.rc.reqc .rc-n{font-size:34px}
-.rc.reqc.pastc .rc-n::after{content:attr(data-st)}
-
+.rc.reqc .rc-n{font-size:21px;line-height:1.05}
+.rc.reqc.pastc .rc-n{font-size:21px}
+.rc.reqc.pastc .rc-n::after{content:attr(data-st);display:block;margin-top:4px;font-size:9.5px;padding:2px 6px;border-width:1.5px;transform:rotate(-4deg);text-align:center}
+.rc.reqc.pastc .rc-n small{display:none}
+.rt-hint .gl{color:var(--terra-soft);margin-left:8px}
+.chip.go{background:var(--terra);color:var(--ink);border-color:var(--terra);font-weight:700}
+.rc-go{margin-top:2px;font-size:12px;font-weight:700;color:#8A5A33;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.rc-go:hover{color:var(--ink)}
+.ln-frame{display:block;width:100%;height:1200px;border:0;background:transparent;margin-top:6px}
+.ln-open{margin:0 0 6px;font-size:13.5px}.ln-open a{color:#8A5A33;font-weight:600;text-decoration:underline;text-underline-offset:3px}
 .nav-dd{position:relative;display:flex;align-items:center}
 .nav-dd::after{content:"";position:absolute;left:0;right:0;top:100%;height:16px}
 .nav-dd-t::after{content:"";display:inline-block;width:6px;height:6px;margin:0 0 3px 7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);transition:transform .2s ease}
@@ -369,7 +376,7 @@ posthog.init('phc_xmZMnSQ8KY6RKychZWiMYTZFSfLd4Qu3PoZwEQjkXFZ4',{api_host:'https
  <div class="rt">
   <div class="rt-head"><span>Ruta al <b>6 de junio de 2027</b> · desliza o usa las flechas</span><span class="rt-btns"><button type="button" id="rt-l" aria-label="Fechas anteriores">‹</button><button type="button" id="rt-r" aria-label="Fechas siguientes">›</button></span></div>
   <div class="rt-scroll" id="rt-scroll"><div class="rt-in" id="rt-in" role="tablist" aria-label="Fechas más importantes"></div></div>
-  <p class="rt-hint">Toca una boleta para ver todo el detalle debajo.</p>
+  <p class="rt-hint">Toca una boleta para ver todo el detalle debajo. <b class="gl">LIPEECH:</b> Ley de Instituciones y Procedimientos Electorales del Estado de Chiapas.</p>
  </div>
  <div id="md" aria-live="polite"></div>
  <details class="allcal">
@@ -401,23 +408,13 @@ posthog.init('phc_xmZMnSQ8KY6RKychZWiMYTZFSfLd4Qu3PoZwEQjkXFZ4',{api_host:'https
 
 <section class="part" id="listado" role="tabpanel" hidden><div class="wrap">
  <div class="part-head"><div class="letter" aria-hidden="true">3</div><div><h2>Listado nominal</h2><p>Es la lista de ciudadanas y ciudadanos con credencial para votar vigente: quienes pueden votar el 6 de junio de 2027.</p></div></div>
- <div class="lnbox">
-  <div>
-   <h3>Lista nominal por municipio y sección</h3>
-   <p>Consulta el resumen del padrón de Chiapas por municipio y sección, con porcentajes por sexo y rangos de edad. Datos abiertos del INE, corte al 29 de octubre de 2026.</p>
-  </div>
-  <a href="/padron.html" class="btn-light">Ver lista nominal</a>
- </div>
+ <iframe id="ln-frame" class="ln-frame" title="Lista nominal de Chiapas por municipio" data-src="/padron.html?embed=1" loading="lazy"></iframe>
+ <p class="ln-open"><a href="/padron.html">Abrir la lista nominal en página completa ↗</a></p>
  <div class="lfund"><b>Fundamento legal.</b> Entrega de estadísticos del padrón electoral y de la lista nominal del INE al IEPC, por sección y municipio: artículo 93 del Reglamento de Elecciones y Convenio General de Coordinación INE-IEPC con su Anexo Técnico. Lista nominal para revisión en medios ópticos: artículo 92, numeral 3, del Reglamento de Elecciones. Recepción de la lista nominal definitiva: artículo 93 del Reglamento de Elecciones (actividades 11, 51 y 83 del Anexo único del Acuerdo IEPC/CG-A/067/2026).</div>
- <div class="cards3">
-  <div class="card3"><h3>¿Qué mide?</h3><p>A cuántas personas puede llegar una campaña. Es la base para metas de votación, participación y estructura territorial.</p></div>
-  <div class="card3"><h3>¿Por qué importa?</h3><p>Cambia con altas, bajas y cambios de domicilio, por eso conviene trabajar siempre con el corte más reciente.</p></div>
-  <div class="card3"><h3>Del estado a la sección</h3><p>El análisis útil baja a municipio, sección y casilla. Es la base de los diagnósticos municipales.</p></div>
- </div>
 </div></section>
 
 <section class="part" id="candidatos" role="tabpanel" hidden><div class="wrap">
- <div class="part-head"><div class="letter" aria-hidden="true">2</div><div><h2>Candidatos</h2><p>Elige el cargo y recorre, uno por uno, los requisitos para ser candidata o candidato, con su fundamento legal. Fuente: arts. 10 y 11 de la LIPEECH, con la reforma del P.O. núm. 128 (3 de septiembre de 2026).</p></div></div>
+ <div class="part-head"><div class="letter" aria-hidden="true">2</div><div><h2>Candidatos</h2><p>Elige el cargo y recorre, uno por uno, los requisitos para ser candidata o candidato, con su fundamento legal. Fuente: arts. 10 y 11 de la Ley de Instituciones y Procedimientos Electorales del Estado de Chiapas (LIPEECH), con la reforma del P.O. núm. 128 (3 de septiembre de 2026).</p></div></div>
  <div class="pickers" role="group" aria-label="Elige el cargo">
   <button type="button" class="pick" data-cargo="ayuntamientos" aria-pressed="false"><span class="pk-t">Ayuntamientos</span><span class="pk-d">Presidencia municipal, sindicaturas y regidurías</span></button>
   <button type="button" class="pick" data-cargo="diputaciones" aria-pressed="false"><span class="pk-t">Diputaciones locales</span><span class="pk-d">Mayoría relativa y representación proporcional</span></button>
@@ -568,7 +565,7 @@ function buildRoute(){
     const top=up?p.y-38-236:p.y+38;
     html+='<button type="button" role="tab" class="rc '+cls+'" data-i="'+i+'" aria-selected="false" style="left:'+(p.x-116)+'px;top:'+top+'px">'+
       '<span class="rc-top"><span class="rc-date">'+v.f2+'</span><span class="rc-n">'+big+(small?'<small>'+small+'</small>':'')+'</span></span>'+
-      '<span class="rc-t">'+esc(m.short)+'</span><span class="rc-d">'+esc(CARD[m.n]||m.desc)+'</span><span class="rc-f">§ '+esc(FSHORT[m.n]||'')+'</span></button>';
+      '<span class="rc-t">'+esc(m.short)+'</span><span class="rc-d">'+esc(CARD[m.n]||m.desc)+'</span><span class="rc-f">'+esc(FSHORT[m.n]||'')+'</span></button>';
     html+='<span class="rt-pin '+(v.z==='past'||v.z==='cur'?'pp':'')+'" data-p="'+i+'" style="left:'+p.x+'px;top:'+p.y+'px">'+(i+1)+'</span>';
   });
   html+='<div class="rt-hoy" id="rt-hoy" style="left:0;top:0"><span>Hoy · '+fx(hoy)+'</span></div>';
@@ -699,7 +696,7 @@ function li(r,d){
   return h+'</span></li>';
 }
 const rq={cargo:null,f:'all'};
-const FILT=[['all','Todos'],['plazo','Con plazo'],['c','Comunes'],['e','Del cargo']];
+const FILT=[['all','Todos'],['plazo','Con plazo'],['c','Todos los cargos'],['e','Solo este cargo']];
 function hasPlazo(r){return !!(r[3]||r[2]==='@LIMITE'||/antes|antelaci|retiro|residencia/i.test(r[1]));}
 function fundTxt(r){
   const ref=r[0];
@@ -717,7 +714,7 @@ function li(r,d,i){
   if(nota==='@LIMITE'){ nota=d.limiteTxt; iso=d.limite; }
   let h='<li style="--i:'+Math.min(i,12)+'"><span class="ref">'+esc(r[0])+'</span><span>'+(r[4]?'<span class="tag">REFORMA</span>':'')+esc(r[1]);
   if(nota||iso) h+='<span class="pl">'+(nota?'<span>'+esc(nota)+'</span>':'')+(iso?badge(iso):'')+'</span>';
-  h+='<span class="fl">§ Fundamento: '+esc(fundTxt(r))+'</span>';
+  h+='<span class="fl">Fundamento: '+esc(fundTxt(r))+'</span>';
   return h+'</span></li>';
 }
 
@@ -741,8 +738,8 @@ const RS={
  'Art. 10.2':['Requisitos constitucionales','Cumplir además el art. 40 de la Constitución Local: 18 años cumplidos el día de la elección, entre otros.'],
  'Art. 11.2':['Fórmulas por partido','Cada partido puede registrar hasta cuatro fórmulas simultáneas.']
 };
-function fsh(r){return fundTxt(r).split(' · ')[0]+(r[0]==='Art. 10.2'?' y Const. Local art. 40':'').replace(', numeral ','.').replace(', fracción ',' ').replace(' · reforma P.O. 128 (3-sep-2026)','').replace(' (último párrafo)','').replace('LIPEECH, art.','LIPEECH art.')}
-function bigOf(ref){const m=ref.match(/ ([IVX]+)$/);if(m)return m[1];const n=ref.match(/(\d+\.\d+)/);return ref.indexOf('(final)')>0?'§':(n?n[1]:'')}
+function fsh(r){return (fundTxt(r).split(' · ')[0]).replace(', numeral ','.').replace(', fracción ',', fracc. ').replace(' (último párrafo)','').replace('LIPEECH, art.','LIPEECH art.')+(r[0]==='Art. 10.2'?' y Const. Local art. 40':'')}
+function bigOf(ref){return ''}
 const Q={items:[],sel:0,pts:[],W:0};
 const QSTEP=262,QX0=150,QCY=330;
 function qPath(){
@@ -770,8 +767,8 @@ function buildQ(d){
     if(x.iso&&dd(hoy,P(x.iso))<0)cls+=' pastc';
     const top=up?p.y-38-236:p.y+38;
     h+='<button type="button" role="tab" class="rc '+cls+'" data-i="'+i+'" aria-selected="false" style="left:'+(p.x-116)+'px;top:'+top+'px">'+
-      '<span class="rc-top"><span class="rc-date">'+esc(x.r[0].replace(' (final)','').replace(/\.(\d)/,' num. $1'))+'</span><span class="rc-n"'+(x.iso?' data-st="VENCIÓ '+x.iso.slice(0,4)+'"':'')+'>'+esc(bigOf(x.r[0]))+'<small>'+(x.g==='c'?'común':'del cargo')+'</small></span></span>'+
-      '<span class="rc-t">'+esc(sh[0])+'</span><span class="rc-d">'+esc(sh[1])+'</span><span class="rc-f">§ '+esc(fsh(x.r))+'</span></button>'+
+      '<span class="rc-top"><span class="rc-date">'+esc(x.r[0].replace(/\.(\d)/,' num. $1').replace(' (final)',', último párrafo').replace(/ ([IVX]+)$/,', fracc.\u00a0$1'))+'</span><span class="rc-n"'+(x.iso?' data-st="VENCIÓ '+x.iso.slice(0,4)+'"':'')+'>'+esc(bigOf(x.r[0]))+'<small>'+(x.g==='c'?'todos los cargos':'solo '+(rq.cargo==='diputaciones'?'diputaciones':'ayuntamientos'))+'</small></span></span>'+
+      '<span class="rc-t">'+esc(sh[0])+'</span><span class="rc-d">'+esc(sh[1])+'</span>'+(x.r[2]==='@LIMITE'?'<span class="rc-go" data-goms="69" role="link">Ver esta fecha en el calendario →</span>':'')+'<span class="rc-f">'+esc(fsh(x.r))+'</span></button>'+
       '<span class="rt-pin '+(x.plazo?'pp':'')+'" style="left:'+p.x+'px;top:'+p.y+'px">'+(i+1)+'</span>';
   });
   sc.style.width=Q.W+'px';sc.innerHTML=h;
@@ -787,13 +784,13 @@ function showQ(i,focus,scroll,d){
   if(scroll!==false)sc.scrollTo({left:Math.max(0,Q.pts[Q.sel].x-sc.clientWidth/2),behavior:'smooth'});
   let stt='';
   if(x.iso){const n=dd(hoy,P(x.iso));stt=n>0?(n===1?'Mañana':'Faltan '+plural(n)):(n===0?'Hoy':'Plazo vencido')}
-  else stt=x.g==='c'?'Requisito común':'Requisito del cargo';
-  const tags=['<span class="tg">'+(x.g==='c'?'Común a todos los cargos':d.titulo)+'</span>'].concat(x.r[4]?['<span class="tg">Reforma P.O. 128</span>']:[]);
+  else stt=x.g==='c'?'Todos los cargos':'Solo '+d.titulo.toLowerCase();
+  const tags=['<span class="tg">'+(x.g==='c'?'Aplica a todos los cargos':'Solo '+d.titulo.toLowerCase())+'</span>'].concat(x.r[4]?['<span class="tg">Reforma P.O. 128</span>']:[]);
   document.getElementById('q-md').innerHTML='<div class="md"><div><div class="mdd">'+esc(x.r[0].replace(' (final)','').replace(/\.(\d)/,' num. $1'))+'</div><h3>'+esc(sh[0])+'</h3><p>'+esc(x.r[1])+'</p>'+
     (x.nota?'<p style="margin-top:8px;color:var(--terra-soft)">'+esc(x.nota)+'</p>':'')+
     '<div class="tags">'+tags.join('')+'</div></div><div class="stt'+(x.iso&&dd(hoy,P(x.iso))<0?' pst':'')+'">'+stt+'</div>'+
     '<div class="mdf"><b>Fundamento legal</b><p>'+esc(fundTxt(x.r))+'.</p></div>'+
-    '<div class="md-nav"><button type="button" class="chip" data-q="-1"'+(Q.sel===0?' disabled style="opacity:.4"':'')+'>← Anterior</button><button type="button" class="chip" data-q="1"'+(Q.sel===Q.items.length-1?' disabled style="opacity:.4"':'')+'>Siguiente →</button></div></div>';
+    '<div class="md-nav">'+(x.r[2]==='@LIMITE'?'<button type="button" class="chip go" data-goms="69">Ver esta fecha en el calendario →</button>':'')+'<button type="button" class="chip" data-q="-1"'+(Q.sel===0?' disabled style="opacity:.4"':'')+'>← Anterior</button><button type="button" class="chip" data-q="1"'+(Q.sel===Q.items.length-1?' disabled style="opacity:.4"':'')+'>Siguiente →</button></div></div>';
 }
 function render(){
   const d=DATA[rq.cargo]; if(!d) return;
@@ -803,7 +800,7 @@ function render(){
   FILT.forEach(f=>{h+='<button type="button" class="chip" data-f="'+f[0]+'" aria-pressed="'+(rq.f===f[0])+'">'+f[1]+'</button>'});
   h+='</div><p class="rcount">'+Q.items.length+' de '+all.length+' requisitos · '+d.titulo+'</p></div>';
   h+='<div class="rt"><div class="rt-head"><span>Requisitos · <b>'+d.titulo+'</b> · desliza o usa las flechas</span><span class="rt-btns"><button type="button" id="q-l" aria-label="Requisitos anteriores">‹</button><button type="button" id="q-r" aria-label="Requisitos siguientes">›</button></span></div>'+
-     '<div class="rt-scroll" id="q-scroll"><div class="rt-in" id="q-in"></div></div><p class="rt-hint">Las boletas color arena tienen un plazo. Toca una para ver el detalle y su fundamento legal.</p></div>'+
+     '<div class="rt-scroll" id="q-scroll"><div class="rt-in" id="q-in"></div></div><p class="rt-hint">Las boletas color arena tienen un plazo. Toca una para ver el detalle y su fundamento legal.'+' <b class="gl">LIPEECH:</b> Ley de Instituciones y Procedimientos Electorales del Estado de Chiapas.</p></div>'+
      '<div id="q-md" aria-live="polite"></div>'+
      '<div class="callout"><strong>Fecha límite para separarse del cargo:</strong> 8 de marzo de 2027, noventa días antes de la jornada. Así lo fija el calendario oficial del IEPC (IEPC/CG-A/067/2026, actividades 69 a 71), actualizado con la reforma del P.O. 128. Quien aspira a la reelección en diputaciones también cierra ese día (act. 70).</div>';
   h+='<aside class="norm wide"><h3>Normatividad aplicable</h3><ul>';
@@ -822,8 +819,14 @@ function render(){
   window.addEventListener('pointermove',mv);window.addEventListener('pointerup',up);
   Q.off&&Q.off();Q.off=()=>{window.removeEventListener('pointermove',mv);window.removeEventListener('pointerup',up)};
 }
+function goMs(n){
+  showSec('calendario',true);
+  const k=MS.findIndex(m=>m.n===n);
+  setTimeout(()=>{showMs(k>=0?k:0,false,true);document.querySelector('#calendario .rt').scrollIntoView({behavior:'smooth',block:'center'})},80);
+}
 document.getElementById('req-out').addEventListener('click',e=>{
   const f=e.target.closest('[data-f]'); if(f){rq.f=f.dataset.f; render(); return}
+  const gg=e.target.closest('[data-goms]'); if(gg&&!Q.moved){goMs(+gg.dataset.goms);return}
   const c=e.target.closest('#q-in .rc'); if(c){if(!Q.moved)showQ(+c.dataset.i);return}
   const n=e.target.closest('[data-q]'); if(n){showQ(Q.sel+ +n.dataset.q)}
 });
@@ -845,6 +848,7 @@ const SECS=['calendario','candidatos','listado'];
 const tabBtns=document.querySelectorAll('.tabbtn');
 function showSec(id,push){
   if(id==='requisitos')id='candidatos';
+  if(id==='listado')lnLoad();
   if(SECS.indexOf(id)<0) id='calendario';
   SECS.forEach(sid=>{
     const el=document.getElementById(sid), on=sid===id;
@@ -853,6 +857,17 @@ function showSec(id,push){
   });
   tabBtns.forEach(b=>b.setAttribute('aria-selected',b.dataset.sec===id?'true':'false'));
   if(push){try{history.replaceState(null,'','#'+id)}catch(e){}}
+}
+function lnLoad(){
+  const f=document.getElementById('ln-frame');
+  if(!f||f.dataset.ok)return;f.dataset.ok='1';
+  f.addEventListener('load',()=>{
+    try{
+      const d=f.contentDocument,fit=()=>{f.style.height=(d.documentElement.scrollHeight+4)+'px'};
+      fit();new ResizeObserver(fit).observe(d.body);
+    }catch(e){}
+  });
+  f.src=f.dataset.src;
 }
 tabBtns.forEach(b=>b.addEventListener('click',()=>{
   showSec(b.dataset.sec,true);

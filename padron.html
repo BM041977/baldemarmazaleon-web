@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<script>if(/[?&]embed=1/.test(location.search))document.documentElement.classList.add("embed")</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lista nominal de Chiapas por municipio · Baldemar Maza León</title>
 <meta name="description" content="Lista nominal de los 124 municipios de Chiapas con porcentaje de mujeres y hombres y por rangos de edad. Datos abiertos del INE, corte al 29 de octubre de 2026.">
@@ -185,6 +186,11 @@ footer{padding:36px 0;text-align:center;font-size:13px;color:var(--stone)}
 .nav-dd-m a:hover{background:var(--bone-soft);color:var(--ink)}
 @media(max-width:880px){.nav-dd{display:block}.nav-dd::after{display:none}.nav-dd-t::after{display:none}.nav-dd-m{position:static;opacity:1;visibility:visible;transform:none;min-width:0;padding:0 0 0 16px;border:0;box-shadow:none;background:transparent;border-radius:0}.nav-dd-m a{border-radius:0;padding:14px 0;border-bottom:1px solid var(--line)}.nav-dd-t{display:block;padding:14px 0;border-bottom:1px solid var(--line)}}
 @media(prefers-reduced-motion:reduce){.nav-dd-m{transition:none}}
+html.embed nav,html.embed .contacto,html.embed footer,html.embed #back-to-top,html.embed .hero .eyebrow,html.embed .hero h1{display:none!important}
+html.embed .hero{padding:8px 0 24px}
+html.embed .wrap{padding:0}
+html.embed body{background:transparent}
+html.embed section.tool{padding-bottom:24px}
 </style>
 <script>
 !function(t,e){var o,n,p,r;e.__SV||(window.posthog&&window.posthog.__loaded)||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init Ie Ts Ms Ee Es Rs capture Ge calculateEventProperties Os register register_once register_for_session unregister unregister_for_session js getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSurveysLoaded onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey canRenderSurveyAsync identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty xs Ss createPersonProfile Is opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing Ds debug P ks getPageViewId captureTraceFeedback captureTraceMetric".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
